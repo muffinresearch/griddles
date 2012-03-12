@@ -1,0 +1,13 @@
+body {
+    max-width: 70em;
+    margin: 0 auto;
+    padding: 10px;
+}
+.grid div div {
+    height: 50px;
+    background: #eee;
+}
+.grid .extra div{
+    height: 100px;
+}
+
