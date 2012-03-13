@@ -1,0 +1,3 @@
+/* Non-media query set-up for IE < 9 and other UAs which don't support media queries */
+@import '_mobile.scss';
+@import '_desktop.scss';

@@ -1,0 +1,8 @@
+/* Mobile first media query set-up for IE < 9 and other UAs which don't support media queries */
+@import '_mobile.scss';
+
+/* Would be nice to use a variable here but
+until SASS 3.2 it's not possible */
+@media all and (min-width:480px) {
+    @import "_desktop.scss";
+}
