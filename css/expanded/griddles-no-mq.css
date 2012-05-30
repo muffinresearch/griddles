@@ -1,51 +1,18 @@
 /* Non-media query set-up for IE < 9 and other UAs which don't support media queries */
-.gp-5,
-.gp-10,
-.gp-15,
-.gp-20,
-.gp-25,
-.gp-30,
-.gp-35,
-.gp-40,
-.gp-45,
-.gp-50,
-.gp-55,
-.gp-60,
-.gp-65,
-.gp-70,
-.gp-75,
-.gp-80,
-.gp-85,
-.gp-90,
-.gp-95,
-.gp-100 {
-  display: block;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
+.clearfix {
+  overflow: hidden;
+  *zoom: 1;
 }
 
-.gutter .gp-5,
-.gutter .gp-10,
-.gutter .gp-15,
-.gutter .gp-20,
-.gutter .gp-25,
-.gutter .gp-30,
-.gutter .gp-35,
-.gutter .gp-40,
-.gutter .gp-45,
-.gutter .gp-50,
-.gutter .gp-55,
-.gutter .gp-60,
-.gutter .gp-65,
-.gutter .gp-70,
-.gutter .gp-75,
-.gutter .gp-80,
-.gutter .gp-85,
-.gutter .gp-90,
-.gutter .gp-95,
-.gutter .gp-100 {
+.grid {
+  width: 100%;
+}
+
+.gp-cont, .gp-5, .gp-10, .gp-15, .gp-20, .gp-25, .gp-30, .gp-35, .gp-40, .gp-45, .gp-50, .gp-55, .gp-60, .gp-65, .gp-70, .gp-75, .gp-80, .gp-85, .gp-90, .gp-95, .gp-100 {
+  display: block;
+}
+
+.gutter-gp-cont, .gutter .gp-cont, .gutter .gp-5, .gutter .gp-10, .gutter .gp-15, .gutter .gp-20, .gutter .gp-25, .gutter .gp-30, .gutter .gp-35, .gutter .gp-40, .gutter .gp-45, .gutter .gp-50, .gutter .gp-55, .gutter .gp-60, .gutter .gp-65, .gutter .gp-70, .gutter .gp-75, .gutter .gp-80, .gutter .gp-85, .gutter .gp-90, .gutter .gp-95, .gutter .gp-100 {
   padding: 5px;
 }
 
@@ -55,26 +22,7 @@
   word-spacing: -0.43em;
 }
 
-.gp-5,
-.gp-10,
-.gp-15,
-.gp-20,
-.gp-25,
-.gp-30,
-.gp-35,
-.gp-40,
-.gp-45,
-.gp-50,
-.gp-55,
-.gp-60,
-.gp-65,
-.gp-70,
-.gp-75,
-.gp-80,
-.gp-85,
-.gp-90,
-.gp-95,
-.gp-100 {
+.gp-cont, .gp-5, .gp-10, .gp-15, .gp-20, .gp-25, .gp-30, .gp-35, .gp-40, .gp-45, .gp-50, .gp-55, .gp-60, .gp-65, .gp-70, .gp-75, .gp-80, .gp-85, .gp-90, .gp-95, .gp-100 {
   display: inline-block;
   vertical-align: top;
   letter-spacing: normal;

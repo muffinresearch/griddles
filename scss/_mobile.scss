@@ -1,50 +1,36 @@
 @import 'compass/css3';
+@import 'compass/utilities/general/clearfix';
 @import '_settings.scss';
 
-
-.gp-5,
-.gp-10,
-.gp-15,
-.gp-20,
-.gp-25,
-.gp-30,
-.gp-35,
-.gp-40,
-.gp-45,
-.gp-50,
-.gp-55,
-.gp-60,
-.gp-65,
-.gp-70,
-.gp-75,
-.gp-80,
-.gp-85,
-.gp-90,
-.gp-95,
-.gp-100 {
-    display: block;
-    @include box-sizing(border-box);
+.clearfix {
+    @include clearfix;
 }
-.gutter .gp-5,
-.gutter .gp-10,
-.gutter .gp-15,
-.gutter .gp-20,
-.gutter .gp-25,
-.gutter .gp-30,
-.gutter .gp-35,
-.gutter .gp-40,
-.gutter .gp-45,
-.gutter .gp-50,
-.gutter .gp-55,
-.gutter .gp-60,
-.gutter .gp-65,
-.gutter .gp-70,
-.gutter .gp-75,
-.gutter .gp-80,
-.gutter .gp-85,
-.gutter .gp-90,
-.gutter .gp-95,
-.gutter .gp-100 {
+
+.grid {
+    width: 100%;
+}
+
+.#{$grid-class-prefix}-cont {
+    display: block;
+}
+
+.gutter-#{$grid-class-prefix}-cont {
     padding: $gutter / 2;
+}
+
+.gutter .#{$grid-class-prefix}-cont {
+    @extend .gutter-#{$grid-class-prefix}-cont;
+}
+
+@for $i from 1 through 100 / $percentage-step {
+    .#{$grid-class-prefix}-#{$i * $percentage-step} {
+        @extend .#{$grid-class-prefix}-cont;
+    }
+}
+
+@for $i from 1 through 100 / $percentage-step{
+    .gutter .#{$grid-class-prefix}-#{$i * $percentage-step}  {
+        @extend .gutter-#{$grid-class-prefix}-cont;
+    }
 }
 

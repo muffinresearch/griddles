@@ -1,31 +1,12 @@
 @import '_settings.scss';
 
-
 .grid {
     letter-spacing: -0.31em;
     *letter-spacing: normal;
     word-spacing: -0.43em;
 }
-.gp-5,
-.gp-10,
-.gp-15,
-.gp-20,
-.gp-25,
-.gp-30,
-.gp-35,
-.gp-40,
-.gp-45,
-.gp-50,
-.gp-55,
-.gp-60,
-.gp-65,
-.gp-70,
-.gp-75,
-.gp-80,
-.gp-85,
-.gp-90,
-.gp-95,
-.gp-100 {
+
+.#{$grid-class-prefix}-cont {
     display: inline-block;
     vertical-align: top;
     letter-spacing: normal;
@@ -33,23 +14,15 @@
     margin: 0;
     @include box-sizing(border-box);
 }
-.gp-5   { width: 5%; }
-.gp-10  { width: 10%; }
-.gp-15  { width: 15%; }
-.gp-20  { width: 20%; }
-.gp-25  { width: 25%; }
-.gp-30  { width: 30%; }
-.gp-35  { width: 35%; }
-.gp-40  { width: 40%; }
-.gp-45  { width: 45%; }
-.gp-50  { width: 50%; }
-.gp-55  { width: 55%; }
-.gp-60  { width: 60%; }
-.gp-65  { width: 65%; }
-.gp-70  { width: 70%; }
-.gp-75  { width: 75%; }
-.gp-80  { width: 80%; }
-.gp-85  { width: 85%; }
-.gp-90  { width: 90%; }
-.gp-95  { width: 95%; }
-.gp-100 { width: 100%; }
+
+@for $i from 1 through 100 / $percentage-step {
+    .#{$grid-class-prefix}-#{$i * $percentage-step} {
+        @extend .#{$grid-class-prefix}-cont;
+    }
+}
+
+@for $i from 1 through 100 / $percentage-step{
+    .#{$grid-class-prefix}-#{$i * $percentage-step} {
+        width: 1% * ($i * $percentage-step);
+    }
+}
