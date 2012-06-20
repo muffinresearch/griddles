@@ -7,8 +7,5 @@ $gutter: 10px;
 // The steps at which each block class represents a percentage
 // 5 would result in .gp-5, .gp-10 etc up to .gp-100.
 // Unless you need extremely fine granularity use 5 or 10.
-$percentage-step: 5;
-
-
-
+$percentage-steps: 20, 3;
 

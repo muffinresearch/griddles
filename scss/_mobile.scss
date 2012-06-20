@@ -22,15 +22,17 @@
     @extend .gutter-#{$grid-class-prefix}-cont;
 }
 
-@for $i from 1 through 100 / $percentage-step {
-    .#{$grid-class-prefix}-#{$i * $percentage-step} {
-        @extend .#{$grid-class-prefix}-cont;
-    }
-}
+@each $i in $percentage-steps {
+    $percentage-step: 100 / $i;
+    @for $j from 1 through $i {
+        $suffix: if($j > 1, floor($j * $percentage-step), round($percentage-step));
+        .gutter .#{$grid-class-prefix}-#{$suffix}  {
+            @extend .gutter-#{$grid-class-prefix}-cont;
+        }
+        .#{$grid-class-prefix}-#{$suffix} {
+            @extend .#{$grid-class-prefix}-cont;
+        }
 
-@for $i from 1 through 100 / $percentage-step{
-    .gutter .#{$grid-class-prefix}-#{$i * $percentage-step}  {
-        @extend .gutter-#{$grid-class-prefix}-cont;
     }
 }
 
