@@ -1,0 +1,43 @@
+
+// The following are based on http://jakearchibald.github.com/sass-ie/
+
+$fix-mqs: false !default;
+
+@mixin respond-min($width) {
+    @if $width == 0 {
+        @content;
+    }
+    @else if $fix-mqs {
+        @if $fix-mqs >= $width {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (min-width: $width) {
+            @content;
+        }
+    }
+}
+@mixin respond-max($width) {
+    @if $width == 0 {
+        @content;
+    }
+    @else if $fix-mqs {
+        @if $fix-mqs >= $width {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (max-width: $width) {
+            @content;
+        }
+    }
+}
+
+$is_ie_lt_9: false !default;
+
+@mixin ie_lt_9 {
+    @if $is_ie_lt_9 {
+        @content;
+    }
+}

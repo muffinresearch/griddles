@@ -1,0 +1,73 @@
+@import 'compass/css3';
+@import 'compass/utilities/general/clearfix';
+@import '_settings.scss';
+@import '_utils.scss';
+
+.clearfix {
+    @include clearfix;
+}
+
+.grid {
+    // Remove white-space from grid elements so there's
+    // no need to cuddle inline-block elements
+    font-family: monospace;
+    letter-spacing: -0.63em;
+    word-spacing:-0.63em;
+}
+
+.grid.gutter {
+    margin: 0 -5px;
+}
+
+.#{$grid-class-prefix}-cont {
+    display: block;
+}
+
+.gutter *[class*="#{$grid-class-prefix}-"] {
+    padding: $gutter / 2;
+}
+
+.#{$grid-class-prefix}-cont {
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    margin: 0;
+    @include box-sizing(border-box);
+    font-family: sans;
+}
+
+@each $i in $percentage-steps {
+    $prefix: #{$grid-class-prefix};
+    $suffix: floor($i);
+    .#{$prefix}-#{$suffix}  {
+        @extend .#{$grid-class-prefix}-cont;
+        // By default we stack for mobile widths.
+        // This can be overriden by using width-based modifiers
+        width: 100%;
+    }
+}
+
+
+@include respond-min(nth($M, 1)) {
+    @each $i in $percentage-steps {
+        $prefix: #{$grid-class-prefix};
+        $suffix: floor($i);
+        .#{$prefix}-#{$suffix},
+        .#{nth($S, 2)}-#{$prefix}-#{$suffix} {
+            width: percentage($i)/100;
+        }
+    }
+}
+
+@each $k in $breakpoint_prefixes {
+    @include respond-min(nth($k, 1)) {
+        @each $i in $percentage-steps {
+            $prefix: #{$grid-class-prefix};
+            $suffix: floor($i);
+            .#{nth($k, 2)}-#{$prefix}-#{$suffix} {
+                    width: percentage($i)/100;
+            }
+        }
+    }
+}

@@ -1,3 +1,6 @@
 /* Non-media query set-up for IE < 9 and other UAs which don't support media queries */
-@import '_mobile.scss';
-@import '_desktop.scss';
+
+$is_id_lt_9: true;
+$fix-mqs: 960px;
+
+@import 'griddles-mq';
