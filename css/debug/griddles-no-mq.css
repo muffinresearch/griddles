@@ -33,7 +33,7 @@
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: sans; }
+  font-family: helvetica, sans-serif; }
 
 /* line 43, ../../scss/_griddles.scss */
 .g-5 {

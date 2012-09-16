@@ -34,7 +34,7 @@
     word-spacing: normal;
     margin: 0;
     @include box-sizing(border-box);
-    font-family: sans;
+    font-family: $font-family;
 }
 
 @each $i in $percentage-steps {
