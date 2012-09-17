@@ -3,30 +3,38 @@
 @import '_settings.scss';
 @import '_utils.scss';
 
+// Supply a generally useful clearfix class.
 .clearfix {
     @include clearfix;
 }
 
+// Remove white-space from grid elements so there's
+// no need to cuddle inline-block elements
+// using monospace font provides a reliable + consistent value
+// TODO: Test this is true.
 .grid {
-    // Remove white-space from grid elements so there's
-    // no need to cuddle inline-block elements
     font-family: monospace;
     letter-spacing: -0.63em;
     word-spacing:-0.63em;
 }
 
+// Offset the grid when the gutter is enabled
+// So there's no left/right gutter for first
+// and last elements in a given row.
 .grid.gutter {
     margin: 0 -5px;
 }
 
-.#{$grid-class-prefix}-cont {
-    display: block;
-}
-
+// When gutter class is added to the grid container
+// this rule adds that padding to all the grid elems
+// within.
 .gutter *[class*="#{$grid-class-prefix}-"] {
     padding: $gutter / 2;
 }
 
+// Set the scene for using inline-block
+// box sizing (ie8+) ensures that padding directly
+// on the grid components won't affect the widths.
 .#{$grid-class-prefix}-cont {
     display: inline-block;
     vertical-align: top;
@@ -35,39 +43,57 @@
     margin: 0;
     @include box-sizing(border-box);
     font-family: $font-family;
+    width: 100%;
 }
 
+// Generate the shared rules for all of the standard classes.
 @each $i in $percentage-steps {
     $prefix: #{$grid-class-prefix};
     $suffix: floor($i);
     .#{$prefix}-#{$suffix}  {
         @extend .#{$grid-class-prefix}-cont;
-        // By default we stack for mobile widths.
-        // This can be overriden by using width-based modifiers
-        width: 100%;
     }
 }
 
-
-@include respond-min(nth($M, 1)) {
+// Defaults widths for standard classes
+@include respond-to(nth($M, 2)) {
     @each $i in $percentage-steps {
         $prefix: #{$grid-class-prefix};
         $suffix: floor($i);
-        .#{$prefix}-#{$suffix},
-        .#{nth($S, 2)}-#{$prefix}-#{$suffix} {
+        .#{$prefix}-#{$suffix} {
             width: percentage($i)/100;
         }
     }
 }
-
+/*
+// Small screens
+@include respond-to(nth($S, 2), nth($S, 3)) {
+    @each $i in $percentage-steps {
+        $prefix: #{$grid-class-prefix};
+        $suffix: floor($i);
+        .#{nth($S, 1)}-#{$prefix}-#{$suffix} {
+            @extend .#{$grid-class-prefix}-cont;
+        }
+        .#{nth($S, 1)}-#{$prefix}-#{$suffix} {
+            width: percentage($i)/100;
+        }
+    }
+}
+*/
+// The rest
 @each $k in $breakpoint_prefixes {
-    @include respond-min(nth($k, 1)) {
+    @include respond-to(nth($k, 2), nth($k, 3)) {
         @each $i in $percentage-steps {
             $prefix: #{$grid-class-prefix};
             $suffix: floor($i);
-            .#{nth($k, 2)}-#{$prefix}-#{$suffix} {
-                    width: percentage($i)/100;
+            .#{nth($k, 1)}-#{$prefix}-#{$suffix} {
+                @extend .#{$grid-class-prefix}-cont;
+            }
+            .#{nth($k, 1)}-#{$prefix}-#{$suffix} {
+                width: percentage($i)/100;
             }
         }
     }
 }
+
+

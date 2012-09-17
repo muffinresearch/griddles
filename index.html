@@ -11,6 +11,7 @@
             border: 1px solid #ccc;
             font-family: helvetica, sans;
         }
+        .mobile-examples div div,
         .standard-examples div div {
             height: 50px;
             background: #eee;
@@ -19,10 +20,12 @@
             text-shadow: 0 1px 1px #FFF;
             color: #ccc;
         }
+        .mobile-examples div div:hover,
         .standard-examples div div:hover {
             background: #ccc;
             color: #717171;
         }
+        .mobile-examples .extra div,
         .standard-examples .extra div{
             height: 100px;
         }
@@ -74,6 +77,19 @@
     <div class="g-10"><div>.g-10</div></div>
     <div class="g-10"><div>.g-10</div></div>
 </div>
+
+
+<h2>Break-point overrides</h2>
+
+<p>A common problem with responsive grids is knowing what will happen at a given breakpoint. To make this easier griddles provides classes to make it clear to the author what will happen at a given breakpoint</p>
+
+<div class="grid gutter mobile-examples">
+    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
+    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
+    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
+    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
+</div>
+
 </body>
 </html>
 

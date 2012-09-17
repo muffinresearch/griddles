@@ -4,11 +4,12 @@
 $gutter: 10px;
 
 // Media Query BreakPoints
-$S: (0, "S"); // Mobile
-$M: (480px, "M"); // Larger Mobile/Small Tablet
-$L: (720px, "L"); // Tablet/Very Small Desktop
-$XL: (960px, "XL"); // Larger Tablet/Desktop
-$XXL: (1280px, XXL); // Larger Desktop
+// (prefix, min, max)
+$S: (s, 0, 480px);          // Mobile
+$M: (m, 480px, 720px);      // Larger Mobile/Small Tablet
+$L: (l, 720px, 960px);      // Tablet/Very Small Desktop
+$XL: (xl, 960px, 1280px);   // Larger Tablet/Desktop
+$XXL: (xxl, 1280px, false); // Larger Desktop
 
 // Grid container classname
 $grid_classname: "grid";
@@ -16,16 +17,15 @@ $grid_classname: "grid";
 $grid-class-prefix: g !default;
 
 // The list of prefixes to use to generate modifiers
-$breakpoint_prefixes: $M, $L, $XL, $XXL;
+$breakpoint_prefixes: $S, $M, $L, $XL, $XXL;
 
 // The steps to be used for percentage generation
 // e.g. 20 amounts to 100/20 so 5,10,15... etc
 // e.g  3 amounts to 100/3 e.g: 33.3333, 66,66667
 $percentage-steps: (5,10,15,20,25,30,33.3333,35,40,45,50,55,60,65,66.6666,70,75,80,85,90,95,100);
 
-
 // Font-family: monospace font is used as a reliable way to fix white-space between inline-block grid elms.
 // As a result there's a need to set the preferred font-family for the grid elements
 $font-family: helvetica, sans-serif;
 
-
+$media-query-free-breakpoint: 960px;

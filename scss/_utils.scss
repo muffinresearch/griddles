@@ -1,43 +1,29 @@
 
 // The following are based on http://jakearchibald.github.com/sass-ie/
+// and https://github.com/nex3/sass/issues/408#issuecomment-6086901
 
-$fix-mqs: false !default;
+$media-queries: true !default;
+$is-ie-lt-9: false !default;
 
-@mixin respond-min($width) {
-    @if $width == 0 {
-        @content;
-    }
-    @else if $fix-mqs {
-        @if $fix-mqs >= $width {
-            @content;
-        }
-    }
-    @else {
-        @media screen and (min-width: $width) {
-            @content;
-        }
-    }
-}
-@mixin respond-max($width) {
-    @if $width == 0 {
-        @content;
-    }
-    @else if $fix-mqs {
-        @if $fix-mqs >= $width {
-            @content;
-        }
-    }
-    @else {
-        @media screen and (max-width: $width) {
-            @content;
-        }
-    }
+@mixin respond-to($min-width, $max-width: false) {
+  @if $media-queries {
+    @media screen and (min-width: $min-width) {
+       @if $max-width {
+         @media (max-width: $max-width) {
+            @content
+          }
+       } @else {
+         @content;
+       }
+     }
+  }
+  @else if $min-width <= $media-query-free-breakpoint and (not $max-width or $max-width and $max-width >= $media-query-free-breakpoint) {
+    @content;
+  }
 }
 
-$is_ie_lt_9: false !default;
-
-@mixin ie_lt_9 {
-    @if $is_ie_lt_9 {
+@mixin ie-lt-9 {
+    @if $is-ie-lt-9 {
         @content;
     }
 }
