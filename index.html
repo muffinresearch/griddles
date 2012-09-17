@@ -2,7 +2,12 @@
 <html>
 <head>
     <title>Griddles</title>
+    <!--[if (gte IE 9)|!(IE)]><!-->
     <link href='css/debug/griddles-mq.css' rel='stylesheet' type='text/css'>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <link href='css/debug/griddles-no-mq.css' rel='stylesheet' type='text/css'>
+    <![endif]-->
     <style type='text/css'>
         body {
             max-width: 70em;
@@ -84,10 +89,10 @@
 <p>A common problem with responsive grids is knowing what will happen at a given breakpoint. To make this easier griddles provides classes to make it clear to the author what will happen at a given breakpoint</p>
 
 <div class="grid gutter mobile-examples">
-    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
-    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
-    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
-    <div class="s-g-50 m-g-33 g-25"><div>.s-g-50 .m-g-33 .g-25</div></div>
+    <div class="g-25 s-g-50 m-g-33"><div>.g-25 s-g-50 .m-g-33</div></div>
+    <div class="g-25 s-g-50 m-g-33"><div>.g-25 s-g-50 .m-g-33</div></div>
+    <div class="g-25 s-g-50 m-g-33"><div>.g-25 s-g-50 .m-g-33</div></div>
+    <div class="g-25 s-g-50 m-g-33"><div>.g-25 s-g-50 .m-g-33</div></div>
 </div>
 
 </body>

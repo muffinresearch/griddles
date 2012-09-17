@@ -13,9 +13,10 @@
 // using monospace font provides a reliable + consistent value
 // TODO: Test this is true.
 .grid {
-    font-family: monospace;
-    letter-spacing: -0.63em;
-    word-spacing:-0.63em;
+    font-family: "Courier New", monospace;
+    letter-spacing: -0.65em;
+    word-spacing:-0.65em; 
+    @include box-sizing(border-box);
 }
 
 // Offset the grid when the gutter is enabled
@@ -65,21 +66,7 @@
         }
     }
 }
-/*
-// Small screens
-@include respond-to(nth($S, 2), nth($S, 3)) {
-    @each $i in $percentage-steps {
-        $prefix: #{$grid-class-prefix};
-        $suffix: floor($i);
-        .#{nth($S, 1)}-#{$prefix}-#{$suffix} {
-            @extend .#{$grid-class-prefix}-cont;
-        }
-        .#{nth($S, 1)}-#{$prefix}-#{$suffix} {
-            width: percentage($i)/100;
-        }
-    }
-}
-*/
+
 // The rest
 @each $k in $breakpoint_prefixes {
     @include respond-to(nth($k, 2), nth($k, 3)) {
