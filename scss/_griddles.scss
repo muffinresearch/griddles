@@ -5,7 +5,7 @@
 
 // Supply a generally useful clearfix class.
 .clearfix {
-    @include clearfix;
+    @include pie-clearfix;
 }
 
 // Remove white-space from grid elements so there's
