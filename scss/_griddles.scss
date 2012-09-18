@@ -74,9 +74,6 @@
             $prefix: #{$grid-class-prefix};
             $suffix: floor($i);
             .#{nth($k, 1)}-#{$prefix}-#{$suffix} {
-                @extend .#{$grid-class-prefix}-cont;
-            }
-            .#{nth($k, 1)}-#{$prefix}-#{$suffix} {
                 width: percentage($i)/100;
             }
         }
