@@ -47,6 +47,11 @@
     width: 100%;
 }
 
+// provide a way to hide
+.g-hide {
+    display: none;
+}
+
 // Generate the shared rules for all of the standard classes.
 @each $i in $percentage-steps {
     $prefix: #{$grid-class-prefix};
@@ -70,14 +75,21 @@
 // The rest
 @each $k in $breakpoint_prefixes {
     @include respond-to(nth($k, 2), nth($k, 3)) {
+        $breakpoint: nth($k, 1);
         @each $i in $percentage-steps {
             $prefix: #{$grid-class-prefix};
             $suffix: floor($i);
-            .#{nth($k, 1)}-#{$prefix}-#{$suffix} {
+            .#{$breakpoint}-#{$prefix}-#{$suffix} {
                 width: percentage($i)/100;
             }
         }
+        .#{$breakpoint}-show {
+            display: inline-block !important;
+        }
+        .#{$breakpoint}-hide {
+            display: none !important;
+        }
+        
     }
 }
-
 

@@ -2,7 +2,7 @@
 /* line 7, ../../scss/_griddles.scss */
 .clearfix {
   *zoom: 1; }
-/* line 38, ../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .clearfix:after {
   content: "";
   display: table;
@@ -13,9 +13,8 @@
   font-family: "Courier New", monospace;
   letter-spacing: -0.65em;
   word-spacing: -0.65em;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 /* line 25, ../../scss/_griddles.scss */
@@ -33,273 +32,292 @@
   letter-spacing: normal;
   word-spacing: normal;
   margin: 0;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: helvetica, sans-serif;
   width: 100%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 51, ../../scss/_griddles.scss */
+.g-hide {
+  display: none; }
+
+/* line 69, ../../scss/_griddles.scss */
 .g-5 {
   width: 5%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-10 {
   width: 10%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-15 {
   width: 15%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-20 {
   width: 20%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-25 {
   width: 25%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-30 {
   width: 30%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-33 {
   width: 33.3333%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-35 {
   width: 35%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-40 {
   width: 40%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-45 {
   width: 45%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-50 {
   width: 50%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-55 {
   width: 55%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-60 {
   width: 60%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-65 {
   width: 65%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-66 {
   width: 66.6667%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-70 {
   width: 70%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-75 {
   width: 75%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-80 {
   width: 80%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-85 {
   width: 85%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-90 {
   width: 90%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-95 {
   width: 95%; }
 
-/* line 64, ../../scss/_griddles.scss */
+/* line 69, ../../scss/_griddles.scss */
 .g-100 {
   width: 100%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-5 {
   width: 5%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-10 {
   width: 10%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-15 {
   width: 15%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-20 {
   width: 20%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-25 {
   width: 25%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-30 {
   width: 30%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-33 {
   width: 33.3333%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-35 {
   width: 35%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-40 {
   width: 40%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-45 {
   width: 45%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-50 {
   width: 50%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-55 {
   width: 55%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-60 {
   width: 60%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-65 {
   width: 65%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-66 {
   width: 66.6667%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-70 {
   width: 70%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-75 {
   width: 75%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-80 {
   width: 80%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-85 {
   width: 85%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-90 {
   width: 90%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-95 {
   width: 95%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .l-g-100 {
   width: 100%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 86, ../../scss/_griddles.scss */
+.l-show {
+  display: inline-block !important; }
+
+/* line 89, ../../scss/_griddles.scss */
+.l-hide {
+  display: none !important; }
+
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-5 {
   width: 5%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-10 {
   width: 10%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-15 {
   width: 15%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-20 {
   width: 20%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-25 {
   width: 25%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-30 {
   width: 30%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-33 {
   width: 33.3333%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-35 {
   width: 35%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-40 {
   width: 40%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-45 {
   width: 45%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-50 {
   width: 50%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-55 {
   width: 55%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-60 {
   width: 60%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-65 {
   width: 65%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-66 {
   width: 66.6667%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-70 {
   width: 70%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-75 {
   width: 75%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-80 {
   width: 80%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-85 {
   width: 85%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-90 {
   width: 90%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-95 {
   width: 95%; }
 
-/* line 76, ../../scss/_griddles.scss */
+/* line 82, ../../scss/_griddles.scss */
 .xl-g-100 {
   width: 100%; }
+
+/* line 86, ../../scss/_griddles.scss */
+.xl-show {
+  display: inline-block !important; }
+
+/* line 89, ../../scss/_griddles.scss */
+.xl-hide {
+  display: none !important; }
