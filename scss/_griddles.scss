@@ -47,6 +47,20 @@
     width: 100%;
 }
 
+.g-hide {
+    display: none;
+}
+.g-show {
+    display: inline-block;
+}
+// invisible and in flow
+.g-invisible {
+    visibility: hidden;
+}
+.g-visible {
+    visibility: normal;
+}
+
 // Generate the shared rules for all of the standard classes.
 @each $i in $percentage-steps {
     $prefix: #{$grid-class-prefix};
@@ -70,14 +84,27 @@
 // The rest
 @each $k in $breakpoint_prefixes {
     @include respond-to(nth($k, 2), nth($k, 3)) {
+        $breakpoint: nth($k, 1);
         @each $i in $percentage-steps {
             $prefix: #{$grid-class-prefix};
             $suffix: floor($i);
-            .#{nth($k, 1)}-#{$prefix}-#{$suffix} {
+            .#{$breakpoint}-#{$prefix}-#{$suffix} {
                 width: percentage($i)/100;
             }
         }
+        .#{$breakpoint}-show {
+            display: inline-block;
+        }
+        .#{$breakpoint}-hide {
+            display: none;
+        }
+        .#{$breakpoint}-invisible {
+            visibility: hidden;
+        }
+        .#{$breakpoint}-visible {
+            visibility: visible;
+        }
+        
     }
 }
-
 

@@ -16,6 +16,7 @@
             border: 1px solid #ccc;
             font-family: helvetica, sans;
         }
+        .breakpoint-examples div div,
         .mobile-examples div div,
         .standard-examples div div {
             height: 50px;
@@ -25,6 +26,7 @@
             text-shadow: 0 1px 1px #FFF;
             color: #ccc;
         }
+        .breakpoint-examples div div:hover,
         .mobile-examples div div:hover,
         .standard-examples div div:hover {
             background: #ccc;
@@ -34,6 +36,23 @@
         .standard-examples .extra div{
             height: 100px;
         }
+        
+        .s-show div {
+            font-size: 15px;
+        }
+        .m-show div {
+            font-size: 20px;
+        }
+        .l-show div {
+            font-size: 25px;
+        }
+        .xl-show div {
+            font-size: 30px;
+        }
+        .xxl-show div {
+            font-size: 35px;
+        }
+        
     </style>
 </head>
 <body>
@@ -75,7 +94,7 @@
 
 
     <h2>Break-point overrides</h2>
-
+    
     <p>A common problem with responsive grids is knowing what will happen at a given breakpoint. To make this easier griddles provides classes to make it clear to the author what will happen at a given breakpoint</p>
 
     <div class="grid gutter mobile-examples">
@@ -84,6 +103,26 @@
         <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
         <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
     </div>
+
+    <p>Show only current breakpoint(s)</p>
+    
+    <div class="grid gutter breakpoint-examples">
+        <div class="g-100 g-hide s-show"><div>S</div></div>
+        <div class="g-100 g-hide m-show"><div>M</div></div>
+        <div class="g-100 g-hide l-show"><div>L</div></div>
+        <div class="g-100 g-hide xl-show"><div>XL</div></div>
+        <div class="g-100 g-hide xxl-show"><div>XXL</div></div>
+    </div>
+    
+    <p>Hide something on smaller screens, but keeping them in flow</p>
+    
+    <div class="grid gutter breakpoint-examples">
+        <div class="g-25"><div>.g-25</div></div>
+        <div class="g-25 s-invisible m-invisible"><div>.g-25 .s-hidden .m-hidden</div></div>
+        <div class="g-25"><div>.g-25</div></div>
+        <div class="g-25"><div>.g-25</div></div>
+    </div>
+
 </div>
 </body>
 </html>
