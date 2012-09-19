@@ -37,19 +37,19 @@
             height: 100px;
         }
         
-        .s-present div {
+        .s-show div {
             font-size: 15px;
         }
-        .m-present div {
+        .m-show div {
             font-size: 20px;
         }
-        .l-present div {
+        .l-show div {
             font-size: 25px;
         }
-        .xl-present div {
+        .xl-show div {
             font-size: 30px;
         }
-        .xxl-present div {
+        .xxl-show div {
             font-size: 35px;
         }
         
@@ -107,18 +107,18 @@
     <p>Show only current breakpoint(s)</p>
     
     <div class="grid gutter breakpoint-examples">
-        <div class="g-100 g-absent s-present"><div>S</div></div>
-        <div class="g-100 g-absent m-present"><div>M</div></div>
-        <div class="g-100 g-absent l-present"><div>L</div></div>
-        <div class="g-100 g-absent xl-present"><div>XL</div></div>
-        <div class="g-100 g-absent xxl-present"><div>XXL</div></div>
+        <div class="g-100 g-hide s-show"><div>S</div></div>
+        <div class="g-100 g-hide m-show"><div>M</div></div>
+        <div class="g-100 g-hide l-show"><div>L</div></div>
+        <div class="g-100 g-hide xl-show"><div>XL</div></div>
+        <div class="g-100 g-hide xxl-show"><div>XXL</div></div>
     </div>
     
     <p>Hide something on smaller screens, but keeping them in flow</p>
     
     <div class="grid gutter breakpoint-examples">
         <div class="g-25"><div>.g-25</div></div>
-        <div class="g-25 s-hidden m-hidden"><div>.g-25 .s-hidden .m-hidden</div></div>
+        <div class="g-25 s-invisible m-invisible"><div>.g-25 .s-hidden .m-hidden</div></div>
         <div class="g-25"><div>.g-25</div></div>
         <div class="g-25"><div>.g-25</div></div>
     </div>

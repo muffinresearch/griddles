@@ -47,14 +47,14 @@
     width: 100%;
 }
 
-.g-absent {
+.g-hide {
     display: none;
 }
-.g-present {
+.g-show {
     display: inline-block;
 }
 // invisible and in flow
-.g-hidden {
+.g-invisible {
     visibility: hidden;
 }
 .g-visible {
@@ -92,13 +92,13 @@
                 width: percentage($i)/100;
             }
         }
-        .#{$breakpoint}-present {
+        .#{$breakpoint}-show {
             display: inline-block;
         }
-        .#{$breakpoint}-absent {
+        .#{$breakpoint}-hide {
             display: none;
         }
-        .#{$breakpoint}-hidden {
+        .#{$breakpoint}-invisible {
             visibility: hidden;
         }
         .#{$breakpoint}-visible {
