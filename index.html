@@ -37,19 +37,19 @@
             height: 100px;
         }
         
-        .s-show div {
+        .s-present div {
             font-size: 15px;
         }
-        .m-show div {
+        .m-present div {
             font-size: 20px;
         }
-        .l-show div {
+        .l-present div {
             font-size: 25px;
         }
-        .xl-show div {
+        .xl-present div {
             font-size: 30px;
         }
-        .xxl-show div {
+        .xxl-present div {
             font-size: 35px;
         }
         
@@ -95,17 +95,6 @@
 
     <h2>Break-point overrides</h2>
     
-    <p>Current breakpoint(s)</p>
-    
-    <div class="grid gutter breakpoint-examples">
-        <div class="g-100 g-hide s-show"><div>S</div></div>
-        <div class="g-100 g-hide m-show"><div>M</div></div>
-        <div class="g-100 g-hide l-show"><div>L</div></div>
-        <div class="g-100 g-hide xl-show"><div>XL</div></div>
-        <div class="g-100 g-hide xxl-show"><div>XXL</div></div>
-    </div>
-        
-
     <p>A common problem with responsive grids is knowing what will happen at a given breakpoint. To make this easier griddles provides classes to make it clear to the author what will happen at a given breakpoint</p>
 
     <div class="grid gutter mobile-examples">
@@ -114,6 +103,26 @@
         <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
         <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
     </div>
+
+    <p>Show only current breakpoint(s)</p>
+    
+    <div class="grid gutter breakpoint-examples">
+        <div class="g-100 g-absent s-present"><div>S</div></div>
+        <div class="g-100 g-absent m-present"><div>M</div></div>
+        <div class="g-100 g-absent l-present"><div>L</div></div>
+        <div class="g-100 g-absent xl-present"><div>XL</div></div>
+        <div class="g-100 g-absent xxl-present"><div>XXL</div></div>
+    </div>
+    
+    <p>Hide something on smaller screens, but keeping them in flow</p>
+    
+    <div class="grid gutter breakpoint-examples">
+        <div class="g-25"><div>.g-25</div></div>
+        <div class="g-25 s-hidden m-hidden"><div>.g-25 .s-hidden .m-hidden</div></div>
+        <div class="g-25"><div>.g-25</div></div>
+        <div class="g-25"><div>.g-25</div></div>
+    </div>
+
 </div>
 </body>
 </html>

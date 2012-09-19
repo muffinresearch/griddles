@@ -47,9 +47,18 @@
     width: 100%;
 }
 
-// provide a way to hide
-.g-hide {
+.g-absent {
     display: none;
+}
+.g-present {
+    display: inline-block;
+}
+// invisible and in flow
+.g-hidden {
+    visibility: hidden;
+}
+.g-visible {
+    visibility: normal;
 }
 
 // Generate the shared rules for all of the standard classes.
@@ -83,11 +92,17 @@
                 width: percentage($i)/100;
             }
         }
-        .#{$breakpoint}-show {
-            display: inline-block !important;
+        .#{$breakpoint}-present {
+            display: inline-block;
         }
-        .#{$breakpoint}-hide {
-            display: none !important;
+        .#{$breakpoint}-absent {
+            display: none;
+        }
+        .#{$breakpoint}-hidden {
+            visibility: hidden;
+        }
+        .#{$breakpoint}-visible {
+            visibility: visible;
         }
         
     }
