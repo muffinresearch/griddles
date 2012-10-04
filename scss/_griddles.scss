@@ -12,7 +12,7 @@
 // no need to cuddle inline-block elements
 // using monospace font provides a reliable + consistent value
 // TODO: Test this is true.
-.grid {
+.#{$grid_classname} {
     font-family: "Courier New", monospace;
     letter-spacing: -0.65em;
     word-spacing:-0.65em; 
@@ -22,7 +22,7 @@
 // Offset the grid when the gutter is enabled
 // So there's no left/right gutter for first
 // and last elements in a given row.
-.grid.gutter {
+.#{$grid_classname}.gutter {
     margin: 0 -5px;
 }
 
@@ -47,17 +47,17 @@
     width: 100%;
 }
 
-.g-hide {
+.#{$grid-class-prefix}-hide {
     display: none;
 }
-.g-show {
+.#{$grid-class-prefix}-show {
     display: inline-block;
 }
 // invisible and in flow
-.g-invisible {
+.#{$grid-class-prefix}-invisible {
     visibility: hidden;
 }
-.g-visible {
+.#{$grid-class-prefix}-visible {
     visibility: normal;
 }
 
