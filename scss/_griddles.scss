@@ -63,9 +63,7 @@
 
 // Generate the shared rules for all of the standard classes.
 @each $i in $percentage-steps {
-    $prefix: #{$grid-class-prefix};
-    $suffix: floor($i);
-    .#{$prefix}-#{$suffix}  {
+    #{get-step-selector($i, null)} {
         @extend .#{$grid-class-prefix}-cont;
     }
 }
@@ -73,10 +71,8 @@
 // Defaults widths for standard classes
 @include respond-to(nth($M, 2)) {
     @each $i in $percentage-steps {
-        $prefix: #{$grid-class-prefix};
-        $suffix: floor($i);
-        .#{$prefix}-#{$suffix} {
-            width: percentage($i)/100;
+        #{get-step-selector($i, null)} {
+            width: percentage(nth($i,1)) / 100;
         }
     }
 }
@@ -86,10 +82,8 @@
     @include respond-to(nth($k, 2), nth($k, 3)) {
         $breakpoint: nth($k, 1);
         @each $i in $percentage-steps {
-            $prefix: #{$grid-class-prefix};
-            $suffix: floor($i);
-            .#{$breakpoint}-#{$prefix}-#{$suffix} {
-                width: percentage($i)/100;
+            #{get-step-selector($i, $breakpoint)} {
+                width: percentage(nth($i,1)) / 100;
             }
         }
         .#{$breakpoint}-show {
@@ -107,4 +101,3 @@
         
     }
 }
-

@@ -27,3 +27,48 @@ $is-ie-lt-9: false !default;
         @content;
     }
 }
+
+// creates g-n\/n
+// e.g. get-fraction-selector(1,3) = g-1\/3
+@function get-fraction-selector($step-item) {
+    $numerator: nth($step-item,2);
+    $denominator: nth($step-item,3);
+    @return $grid-class-prefix + "-" + $numerator + $fraction-symbol + $denominator;
+}
+
+// creates g-n
+// e.g. get-percentage-selector(25) = g-25
+@function get-percentage-selector($percent) {
+    @return $grid-class-prefix + "-" + $percent;
+}
+
+// creates a step selector
+// e.g. get-step-selector((25,1,4), null) = .g-25, .g-1\/4
+// e.g. get-step-selector((66.667,2,3), "xxxxl") = .xxxxl-g-66, .xxxxl-g-2\/3
+@function get-step-selector($step-item, $breakpoint) {
+    $selector: "";
+    $bp: "";
+
+    // will insert breakpoint
+    @if($breakpoint) {
+        $bp: $breakpoint + "-";
+    }
+
+    // if we're not using fractions, 
+    // "pop" the fraction values off the list
+    @if($use-fractions-selectors == false) {
+        $step-item: nth($step-item, 1);
+    }
+
+    // we have fraction values
+    @if(length($step-item) > 1) {
+        $percent: floor(nth($step-item,1));
+        $selector: "." + $bp + get-percentage-selector($percent) + "," + "." + $bp + get-fraction-selector($step-item);
+    }
+    // percentage only
+    @else {
+        $percent: floor($step-item);
+        $selector: "." + $bp + get-percentage-selector($percent);
+    }
+    @return $selector;
+}
