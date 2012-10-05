@@ -64,8 +64,15 @@
 // Generate the shared rules for all of the standard classes.
 @each $i in $percentage-steps {
     $prefix: #{$grid-class-prefix};
-    $suffix: floor($i);
-    .#{$prefix}-#{$suffix}  {
+    $selector: "";
+
+    @if(length($i) > 1) {
+        $selector: #{$prefix}-#{floor(nth($i,1))}, #{"."}#{$prefix}-#{nth($i, 2)}#{$fraction-symbol}#{nth($i, 3)};
+    } @else {
+        $selector: #{$prefix}-#{floor($i)};
+    }
+
+    .#{$selector} {
         @extend .#{$grid-class-prefix}-cont;
     }
 }
@@ -74,9 +81,18 @@
 @include respond-to(nth($M, 2)) {
     @each $i in $percentage-steps {
         $prefix: #{$grid-class-prefix};
-        $suffix: floor($i);
-        .#{$prefix}-#{$suffix} {
-            width: percentage($i)/100;
+        $selector: "";
+        $percentage: 0;
+
+        @if(length($i) > 1) {
+            $selector: #{$prefix}-#{floor(nth($i,1))}, #{"."}#{$prefix}-#{nth($i, 2)}#{$fraction-symbol}#{nth($i, 3)};
+            $percentage: nth($i,1);
+        } @else {
+            $selector: #{$prefix}-#{floor($i)};
+            $percentage: $i;
+        }
+        .#{$selector} {
+            width: percentage($percentage) / 100;
         }
     }
 }
@@ -87,9 +103,18 @@
         $breakpoint: nth($k, 1);
         @each $i in $percentage-steps {
             $prefix: #{$grid-class-prefix};
-            $suffix: floor($i);
-            .#{$breakpoint}-#{$prefix}-#{$suffix} {
-                width: percentage($i)/100;
+            $selector: "";
+            $percentage: 0;
+
+            @if(length($i) > 1) {
+                $selector: #{$breakpoint}-#{$prefix}-#{floor(nth($i,1))}, #{"."}#{$breakpoint}-#{$prefix}-#{nth($i, 2)}#{$fraction-symbol}#{nth($i, 3)};
+                $percentage: nth($i,1);
+            } @else {
+                $selector: #{$breakpoint}-#{$prefix}-#{floor($i)};
+                $percentage: $i;
+            }
+            .#{$selector} {
+                width: percentage($percentage) / 100;
             }
         }
         .#{$breakpoint}-show {
@@ -107,4 +132,3 @@
         
     }
 }
-
