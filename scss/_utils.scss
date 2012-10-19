@@ -17,7 +17,7 @@ $is-ie-lt-9: false !default;
        }
      }
   }
-  @else if $min-width <= $media-query-free-breakpoint and (not $max-width or $max-width and $max-width >= $media-query-free-breakpoint) {
+  @else if $min-width <= $griddles-media-query-free-breakpoint and (not $max-width or $max-width and $max-width >= $griddles-media-query-free-breakpoint) {
     @content;
   }
 }
@@ -33,13 +33,13 @@ $is-ie-lt-9: false !default;
 @function get-fraction-selector($step-item) {
     $numerator: nth($step-item,2);
     $denominator: nth($step-item,3);
-    @return $grid-class-prefix + "-" + $numerator + $fraction-symbol + $denominator;
+    @return $griddles-grid-class-prefix + "-" + $numerator + $griddles-fraction-symbol + $denominator;
 }
 
 // creates g-n
 // e.g. get-percentage-selector(25) = g-25
 @function get-percentage-selector($percent) {
-    @return $grid-class-prefix + "-" + $percent;
+    @return $griddles-grid-class-prefix + "-" + $percent;
 }
 
 // creates a step selector
@@ -56,7 +56,7 @@ $is-ie-lt-9: false !default;
 
     // if we're not using fractions, 
     // "pop" the fraction values off the list
-    @if($use-fractions-selectors == false) {
+    @if($griddles-use-fractions-selectors == false) {
         $step-item: nth($step-item, 1);
     }
 

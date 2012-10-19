@@ -12,7 +12,7 @@
 // no need to cuddle inline-block elements
 // using monospace font provides a reliable + consistent value
 // TODO: Test this is true.
-.#{$grid_classname} {
+.#{$griddles-grid-classname} {
     font-family: "Courier New", monospace;
     letter-spacing: -0.65em;
     word-spacing:-0.65em; 
@@ -22,55 +22,55 @@
 // Offset the grid when the gutter is enabled
 // So there's no left/right gutter for first
 // and last elements in a given row.
-.#{$grid_classname}.gutter {
+.#{$griddles-grid-classname}.gutter {
     margin: 0 -5px;
 }
 
 // When gutter class is added to the grid container
 // this rule adds that padding to all the grid elems
 // within.
-.gutter *[class*="#{$grid-class-prefix}-"] {
-    padding: $gutter / 2;
+.gutter *[class*="#{$griddles-grid-class-prefix}-"] {
+    padding: $griddles-gutter-size / 2;
 }
 
 // Set the scene for using inline-block
 // box sizing (ie8+) ensures that padding directly
 // on the grid components won't affect the widths.
-.#{$grid-class-prefix}-cont {
+.#{$griddles-grid-class-prefix}-cont {
     display: inline-block;
     vertical-align: top;
     letter-spacing: normal;
     word-spacing: normal;
     margin: 0;
     @include box-sizing(border-box);
-    font-family: $font-family;
+    font-family: $griddles-font-family;
     width: 100%;
 }
 
-.#{$grid-class-prefix}-hide {
+.#{$griddles-grid-class-prefix}-hide {
     display: none;
 }
-.#{$grid-class-prefix}-show {
+.#{$griddles-grid-class-prefix}-show {
     display: inline-block;
 }
 // invisible and in flow
-.#{$grid-class-prefix}-invisible {
+.#{$griddles-grid-class-prefix}-invisible {
     visibility: hidden;
 }
-.#{$grid-class-prefix}-visible {
+.#{$griddles-grid-class-prefix}-visible {
     visibility: normal;
 }
 
 // Generate the shared rules for all of the standard classes.
-@each $i in $percentage-steps {
+@each $i in $griddles-percentage-steps {
     #{get-step-selector($i, null)} {
-        @extend .#{$grid-class-prefix}-cont;
+        @extend .#{$griddles-grid-class-prefix}-cont;
     }
 }
 
 // Defaults widths for standard classes
-@include respond-to(nth($M, 2)) {
-    @each $i in $percentage-steps {
+@include respond-to(nth($griddles-M, 2)) {
+    @each $i in $griddles-percentage-steps {
         #{get-step-selector($i, null)} {
             width: percentage(nth($i,1)) / 100;
         }
@@ -78,10 +78,10 @@
 }
 
 // The rest
-@each $k in $breakpoint_prefixes {
+@each $k in $griddles-breakpoint-prefixes {
     @include respond-to(nth($k, 2), nth($k, 3)) {
         $breakpoint: nth($k, 1);
-        @each $i in $percentage-steps {
+        @each $i in $griddles-percentage-steps {
             #{get-step-selector($i, $breakpoint)} {
                 width: percentage(nth($i,1)) / 100;
             }
