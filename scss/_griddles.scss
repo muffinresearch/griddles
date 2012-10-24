@@ -8,6 +8,12 @@
     @include pie-clearfix;
 }
 
+$griddles-percentage-steps: get-steps-list($griddles-step-increment);
+@debug $griddles-percentage-steps;
+
+$griddles-fraction-selectors: get-fraction-selectors($griddles-fraction-steps);
+@debug $griddles-fraction-selectors;
+
 // Remove white-space from grid elements so there's
 // no need to cuddle inline-block elements
 // using monospace font provides a reliable + consistent value
@@ -29,14 +35,14 @@
 // When gutter class is added to the grid container
 // this rule adds that padding to all the grid elems
 // within.
-.gutter *[class*="#{$griddles-grid-class-prefix}-"] {
+.gutter > [class*="#{$griddles-class-prefix}-"] {
     padding: $griddles-gutter-size / 2;
 }
 
 // Set the scene for using inline-block
 // box sizing (ie8+) ensures that padding directly
 // on the grid components won't affect the widths.
-.#{$griddles-grid-class-prefix}-cont {
+.#{$griddles-class-prefix}-cont {
     display: inline-block;
     vertical-align: top;
     letter-spacing: normal;
@@ -47,31 +53,31 @@
     width: 100%;
 }
 
-.#{$griddles-grid-class-prefix}-hide {
+.#{$griddles-class-prefix}-hide {
     display: none;
 }
-.#{$griddles-grid-class-prefix}-show {
+.#{$griddles-class-prefix}-show {
     display: inline-block;
 }
 // invisible and in flow
-.#{$griddles-grid-class-prefix}-invisible {
+.#{$griddles-class-prefix}-invisible {
     visibility: hidden;
 }
-.#{$griddles-grid-class-prefix}-visible {
+.#{$griddles-class-prefix}-visible {
     visibility: normal;
 }
 
 // Generate the shared rules for all of the standard classes.
 @each $i in $griddles-percentage-steps {
     #{get-step-selector($i, null)} {
-        @extend .#{$griddles-grid-class-prefix}-cont;
+        @extend .#{$griddles-class-prefix}-cont;
     }
 }
 
 // Defaults widths for standard classes
 @include respond-to(nth($griddles-M, 2)) {
     @each $i in $griddles-percentage-steps {
-        #{get-step-selector($i, null)} {
+        .#{$griddles-class-prefix}-#{$i} {
             width: percentage(nth($i,1)) / 100;
         }
     }

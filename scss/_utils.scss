@@ -28,18 +28,57 @@ $is-ie-lt-9: false !default;
     }
 }
 
+// From a step value return a list of all perecentages 
+// we want to generate.
+// E.g: For a step value of 5 this should return a list of 
+// [5,10,15...100]
+@function get-steps-list($step-value) {
+    $i: $step-value;
+    $list: ();
+    @while $i <= 100 {
+        $list: append($list, $i);
+        $i: $i + $step-value; 
+    }
+    @return $list;
+}
+
+@function get-fraction-selectors($denominators-list) {
+    $list: ();
+    $value-list: ();
+    @each $denominator in  $denominators-list {
+        $i: 1;
+        @while $i < $denominator { 
+            $numerator: $i;
+            $value: (100 / $denominator) * $numerator;
+
+            $index-of-value: index($value-list, $value);
+            @if index-of-value != false {
+            }
+
+
+            $class: $griddles-class-prefix + "-" + $numerator + $griddles-fraction-symbol + $denominator;
+            // Generates a comma separated list of space-separated values
+            $list: join($list, (#{$class} #{$value}), comma);
+            
+            $i: $i + 1;
+        }
+    }
+    @return $list;
+}
+
+
 // creates g-n\/n
 // e.g. get-fraction-selector(1,3) = g-1\/3
 @function get-fraction-selector($step-item) {
     $numerator: nth($step-item,2);
     $denominator: nth($step-item,3);
-    @return $griddles-grid-class-prefix + "-" + $numerator + $griddles-fraction-symbol + $denominator;
+    @return $griddles-class-prefix + "-" + $numerator + $griddles-fraction-symbol + $denominator;
 }
 
 // creates g-n
 // e.g. get-percentage-selector(25) = g-25
 @function get-percentage-selector($percent) {
-    @return $griddles-grid-class-prefix + "-" + $percent;
+    @return $griddles-class-prefix + "-" + $percent;
 }
 
 // creates a step selector
