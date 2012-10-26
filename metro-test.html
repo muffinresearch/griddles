@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Griddles</title>
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <link href='css/debug/griddles-mq.css' rel='stylesheet' type='text/css'>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <link href='css/debug/griddles-no-mq.css' rel='stylesheet' type='text/css'>
+    <![endif]-->
+    <style type='text/css'>
+        .container {
+            max-width: 70em;
+            margin: 0 auto;
+            padding: 10px;
+            font-family: helvetica, sans;
+        }
+        .txt {
+            background: #eee;
+            text-align: center;
+            line-height: 50px;
+            text-shadow: 0 1px 1px #FFF;
+            color: #ccc;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            left: 5px;
+            bottom: 5px;
+        }
+        .grid {
+            width: 100%;
+        }
+        .grid [class*="g-"] {
+            position: relative;
+        }
+        .txt:hover {
+            background: #ccc;
+            color: #717171;
+        }
+        .extra-div {
+            height: 100px;
+        }
+        .s-show div {
+            font-size: 15px;
+        }
+        .m-show div {
+            font-size: 20px;
+        }
+        .l-show div {
+            font-size: 25px;
+        }
+        .xl-show div {
+            font-size: 30px;
+        }
+        .xxl-show div {
+            font-size: 35px;
+        }
+        .green {
+           background: #6CB71E;
+        }
+        .red {
+            background: #BD1D4A;
+        }
+        .blue {
+            background: #2C86EE;
+        }
+        .purple {
+            background: #613CBC;
+        }
+        .orange {
+            background: #D9522C;
+        }
+        .outlined {
+            outline: 1px solid yellow;
+        }
+
+        .h-1\/6 {
+            /* Approximate some height control based on the parent */
+            padding-bottom: 16.666666667% !important;
+            padding-top: 0 !important;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+       <h1>Griddles</h1>
+    </header>
+    <h2>A Metro-alike example. Using some extra tricks to maintain height.</h2>
+
+    <div class="grid clearfix gutter metro-examples">
+        <div class="g-1/6 h-1/6"><div class="txt orange"></div></div>
+        <div class="g-1/6 h-1/6"><div class="txt green"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt red"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt blue"></div></div>
+        <div class="g-1/6 h-1/6"><div class="txt red"></div></div>
+        <div class="g-1/6 h-1/6"><div class="txt blue"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt orange"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt green"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt orange"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt green"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt blue"></div></div>
+    </div>
+
+</div>
+</body>
+</html>
+

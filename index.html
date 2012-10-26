@@ -13,12 +13,9 @@
             max-width: 70em;
             margin: 0 auto;
             padding: 10px;
-            border: 1px solid #ccc;
             font-family: helvetica, sans;
         }
-        .breakpoint-examples div div,
-        .mobile-examples div div,
-        .standard-examples div div {
+        .txt {
             height: 50px;
             background: #eee;
             text-align: center;
@@ -26,17 +23,13 @@
             text-shadow: 0 1px 1px #FFF;
             color: #ccc;
         }
-        .breakpoint-examples div div:hover,
-        .mobile-examples div div:hover,
-        .standard-examples div div:hover {
+        .txt:hover {
             background: #ccc;
             color: #717171;
         }
-        .mobile-examples .extra div,
-        .standard-examples .extra div{
+        .extra-div {
             height: 100px;
         }
-        
         .s-show div {
             font-size: 15px;
         }
@@ -52,7 +45,7 @@
         .xxl-show div {
             font-size: 35px;
         }
-        
+
     </style>
 </head>
 <body>
@@ -64,63 +57,63 @@
 
     <p>Here's a selection of the standard classes applied to create various divisions of content</p>
     <div class="grid gutter standard-examples">
-        <div class="g-33"><div>.g-33</div></div>
-        <div class="g-1/3"><div>.g-1/3</div></div>
-        <div class="g-33"><div>.g-33</div></div>
-        <div class="g-33"><div>.g-33</div></div>
-        <div class="g-66"><div>.g-66</div></div>
-        <div class="g-10"><div>.g-10</div></div>
-        <div class="g-20"><div>.g-20</div></div>
-        <div class="g-30"><div>.g-30</div></div>
-        <div class="g-40"><div>.g-40</div></div>
+        <div class="g-1/3"><div class="txt">.g-1/3</div></div>
+        <div class="g-1/3"><div class="txt">.g-1/3</div></div>
+        <div class="g-1/3"><div class="txt">.g-1/3</div></div>
+        <div class="g-1/3"><div class="txt">.g-1/3</div></div>
+        <div class="g-2/3"><div class="txt">.g-2/3</div></div>
+        <div class="g-10"><div class="txt">.g-10</div></div>
+        <div class="g-20"><div class="txt">.g-20</div></div>
+        <div class="g-30"><div class="txt">.g-30</div></div>
+        <div class="g-40"><div class="txt">.g-40</div></div>
 
-        <div class="g-50"><div>.g-50</div></div>
-        <div class="g-50"><div>.g-50</div></div>
+        <div class="g-50"><div class="txt">.g-50</div></div>
+        <div class="g-50"><div class="txt">.g-50</div></div>
 
-        <div class="g-40"><div>.g-40</div></div>
-        <div class="g-60"><div>.g-60</div></div>
+        <div class="g-40"><div class="txt">.g-40</div></div>
+        <div class="g-60"><div class="txt">.g-60</div></div>
 
-        <div class="g-30"><div>.g-30</div></div>
-        <div class="g-70"><div>.g-70</div></div>
+        <div class="g-30"><div class="txt">.g-30</div></div>
+        <div class="g-70"><div class="txt">.g-70</div></div>
 
-        <div class="g-5"><div>.g-5</div></div>
-        <div class="g-95"><div>.g-95</div></div>
+        <div class="g-5"><div class="txt">.g-5</div></div>
+        <div class="g-95"><div class="txt">.g-95</div></div>
 
-        <div class="g-25"><div>.g-25</div></div>
-        <div class="g-25"><div>.g-25</div></div>
-        <div class="g-25"><div>.g-25</div></div>
-        <div class="g-25"><div>.g-25</div></div>
+        <div class="g-25"><div class="txt">.g-25</div></div>
+        <div class="g-25"><div class="txt">.g-25</div></div>
+        <div class="g-25"><div class="txt">.g-25</div></div>
+        <div class="g-25"><div class="txt">.g-25</div></div>
     </div>
 
 
     <h2>Break-point overrides</h2>
-    
+
     <p>A common problem with responsive grids is knowing what will happen at a given breakpoint. To make this easier griddles provides classes to make it clear to the author what will happen at a given breakpoint</p>
 
     <div class="grid gutter mobile-examples">
-        <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
-        <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
-        <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
-        <div class="g-25 s-g-50 m-g-33"><div>.g-25 .s-g-50 .m-g-33</div></div>
+        <div class="g-25 s-g-50 m-g-1/3"><div class="txt">.g-25 .s-g-50 .m-g-1/3</div></div>
+        <div class="g-25 s-g-50 m-g-1/3"><div class="txt">.g-25 .s-g-50 .m-g-1/3</div></div>
+        <div class="g-25 s-g-50 m-g-1/3"><div class="txt">.g-25 .s-g-50 .m-g-1/3</div></div>
+        <div class="g-25 s-g-50 m-g-1/3"><div class="txt">.g-25 .s-g-50 .m-g-1/3</div></div>
     </div>
 
     <p>Show only current breakpoint(s)</p>
-    
+
     <div class="grid gutter breakpoint-examples">
-        <div class="g-100 g-hide s-show"><div>S</div></div>
-        <div class="g-100 g-hide m-show"><div>M</div></div>
-        <div class="g-100 g-hide l-show"><div>L</div></div>
-        <div class="g-100 g-hide xl-show"><div>XL</div></div>
-        <div class="g-100 g-hide xxl-show"><div>XXL</div></div>
+        <div class="g-100 g-hide s-show"><div class="txt">S</div></div>
+        <div class="g-100 g-hide m-show"><div class="txt">M</div></div>
+        <div class="g-100 g-hide l-show"><div class="txt">L</div></div>
+        <div class="g-100 g-hide xl-show"><div class="txt">XL</div></div>
+        <div class="g-100 g-hide xxl-show"><div class="txt">XXL</div></div>
     </div>
-    
+
     <p>Hide something on smaller screens, but keeping them in flow</p>
-    
+
     <div class="grid gutter breakpoint-examples">
-        <div class="g-25"><div>.g-25</div></div>
-        <div class="g-25 s-invisible m-invisible"><div>.g-25 .s-hidden .m-hidden</div></div>
-        <div class="g-25"><div>.g-25</div></div>
-        <div class="g-25"><div>.g-25</div></div>
+        <div class="g-25"><div class="txt">.g-25</div></div>
+        <div class="g-25 s-invisible m-invisible"><div class="txt">.g-25 .s-hidden .m-hidden</div></div>
+        <div class="g-25"><div class="txt">.g-25</div></div>
+        <div class="g-25"><div class="txt">.g-25</div></div>
     </div>
 
 </div>
