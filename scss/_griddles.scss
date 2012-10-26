@@ -8,14 +8,29 @@
     @include pie-clearfix;
 }
 
+// Building the data necessary to have collapsed selectors for shared values.
+// E.g: g-50, g-1/2 are the same value 50%;
+// Generate a list of all the percentages up to 100 based on the step configured.
+$perc-steps-and-value-list: get-steps-and-value-list($griddles-step-increment);
+
+// Get a list of two-item lists containg the key and the value extending the list input.
+$key-and-value-list: get-fraction-and-value-list($griddles-fraction-steps, $perc-steps-and-value-list);
+
+// Get the list of unique keys and values
+$unique-value-list: get-unique-value-list($key-and-value-list);
+
+// Get a list that has a list of lists. The individual lists will be
+// (selector-key, key, value);
+$sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list);
+
 // Remove white-space from grid elements so there's
 // no need to cuddle inline-block elements
 // using monospace font provides a reliable + consistent value
-// TODO: Test this is true.
+// This feature is inspired by http://www.stacklayout.com/
 .#{$griddles-grid-classname} {
     font-family: "Courier New", monospace;
-    letter-spacing: -0.65em;
-    word-spacing:-0.65em; 
+    letter-spacing: -0.63em;
+    word-spacing:-0.63em;
     @include box-sizing(border-box);
 }
 
@@ -29,14 +44,15 @@
 // When gutter class is added to the grid container
 // this rule adds that padding to all the grid elems
 // within.
-.gutter *[class*="#{$griddles-grid-class-prefix}-"] {
+.gutter > [class*="#{$griddles-class-prefix}-"] {
     padding: $griddles-gutter-size / 2;
 }
 
 // Set the scene for using inline-block
 // box sizing (ie8+) ensures that padding directly
 // on the grid components won't affect the widths.
-.#{$griddles-grid-class-prefix}-cont {
+// NOTE: This is extend only so isn't output.
+.#{$griddles-class-prefix}-cont {
     display: inline-block;
     vertical-align: top;
     letter-spacing: normal;
@@ -47,45 +63,74 @@
     width: 100%;
 }
 
-.#{$griddles-grid-class-prefix}-hide {
+// Output generic helpers for visibility/display
+.#{$griddles-class-prefix}-hide {
     display: none;
 }
-.#{$griddles-grid-class-prefix}-show {
+.#{$griddles-class-prefix}-show {
     display: inline-block;
 }
 // invisible and in flow
-.#{$griddles-grid-class-prefix}-invisible {
+.#{$griddles-class-prefix}-invisible {
     visibility: hidden;
 }
-.#{$griddles-grid-class-prefix}-visible {
+.#{$griddles-class-prefix}-visible {
     visibility: normal;
 }
 
+
 // Generate the shared rules for all of the standard classes.
-@each $i in $griddles-percentage-steps {
-    #{get-step-selector($i, null)} {
-        @extend .#{$griddles-grid-class-prefix}-cont;
+@each $extkey-sel-val in $sel-key-val-list {
+    $sel: nth($extkey-sel-val, 2);
+    .#{$griddles-class-prefix}-#{$sel} {
+        @extend .#{$griddles-class-prefix}-cont;
+    }
+}
+
+// Loop over the unique values and output the collective
+// Selectors for the same values.
+// This is necessary due to problems generating and
+// using extends inside the same @media block
+@mixin generate-width-selectors($sel-prefix) {
+
+     @each $unique-keypair in $unique-value-list {
+        $extend-sel: nth($unique-keypair, 1);
+        $extend-val: nth($unique-keypair, 2);
+        $selector-list: ();
+        @each $extkey-sel-val in $sel-key-val-list {
+            $extkey: nth($extkey-sel-val, 1);
+            $sel: nth($extkey-sel-val, 2);
+
+            @if $extkey == $extend-sel {
+                $classname: ".#{$sel-prefix}#{$sel}";
+                $selector-list: append($selector-list, #{$classname}, comma)
+            }
+
+        }
+        // Having collected all the selectors that need this value
+        // output it.
+        #{$selector-list} {
+            width: percentage($extend-val) / 100;
+        }
     }
 }
 
 // Defaults widths for standard classes
+// This starts at "M" as "S" is essentially the baseline.
 @include respond-to(nth($griddles-M, 2)) {
-    @each $i in $griddles-percentage-steps {
-        #{get-step-selector($i, null)} {
-            width: percentage(nth($i,1)) / 100;
-        }
-    }
+    @include generate-width-selectors("#{$griddles-class-prefix}-");
 }
 
-// The rest
+// This loop generates the breakpoint override selectors.
+// They are contained to the breakpoint with min *and* max
+// so if there's not an override for that breakpoint the normal
+// the non-override class will apply.
 @each $k in $griddles-breakpoint-prefixes {
     @include respond-to(nth($k, 2), nth($k, 3)) {
+
         $breakpoint: nth($k, 1);
-        @each $i in $griddles-percentage-steps {
-            #{get-step-selector($i, $breakpoint)} {
-                width: percentage(nth($i,1)) / 100;
-            }
-        }
+        @include generate-width-selectors("#{$breakpoint}-#{$griddles-class-prefix}-");
+
         .#{$breakpoint}-show {
             display: inline-block;
         }
@@ -98,6 +143,6 @@
         .#{$breakpoint}-visible {
             visibility: visible;
         }
-        
     }
 }
+

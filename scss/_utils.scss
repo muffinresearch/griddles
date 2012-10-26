@@ -28,47 +28,91 @@ $is-ie-lt-9: false !default;
     }
 }
 
-// creates g-n\/n
-// e.g. get-fraction-selector(1,3) = g-1\/3
-@function get-fraction-selector($step-item) {
-    $numerator: nth($step-item,2);
-    $denominator: nth($step-item,3);
-    @return $griddles-grid-class-prefix + "-" + $numerator + $griddles-fraction-symbol + $denominator;
+// GRIDDLES INTERNAL PREPROCESSING --------------------------------------
+// Note: Hopefully we can factor out some of the data massaging in future.
+
+// From a step value return a list of all perecentages
+// we want to generate.
+// E.g: For a step value of 5 this should return a list of
+// [5,10,15...100]
+@function get-steps-and-value-list($step-value) {
+    $i: $step-value;
+    $list: ();
+    @while $i <= 100 {
+        $items: "#{$i}", $i;
+        $list: append($list, $items, space);
+        $i: $i + $step-value;
+    }
+    // @debug $list;
+    @return $list;
 }
 
-// creates g-n
-// e.g. get-percentage-selector(25) = g-25
-@function get-percentage-selector($percent) {
-    @return $griddles-grid-class-prefix + "-" + $percent;
+// Fed the output of get-steps-and-value-list
+// This function generates the fraction values
+// The result list is all the steps and fractions for the
+// selector generation.
+@function get-fraction-and-value-list($denominators-list, $list) {
+    @each $denominator in  $denominators-list {
+        $i: 1;
+        @while $i < $denominator {
+            $numerator: $i;
+            $value: (100 / $denominator) * $numerator;
+            $fraction: $numerator + $griddles-fraction-symbol + $denominator;
+            // Generates a comma separated list of space-separated values
+            $items: $fraction, $value;
+            $list: append($list, $items, space);
+            $i: $i + 1;
+        }
+    }
+    //@debug $list;
+    @return $list;
 }
 
-// creates a step selector
-// e.g. get-step-selector((25,1,4), null) = .g-25, .g-1\/4
-// e.g. get-step-selector((66.667,2,3), "xxxxl") = .xxxxl-g-66, .xxxxl-g-2\/3
-@function get-step-selector($step-item, $breakpoint) {
-    $selector: "";
-    $bp: "";
+// This function provides a list of all the unique values
+// we need to generate so we can use this to collapse selectors
+// with the same value together.
+@function get-unique-value-list($key-and-value-list) {
 
-    // will insert breakpoint
-    @if($breakpoint) {
-        $bp: $breakpoint + "-";
+    //@debug $key-and-value-list;
+    $unique-value-keys: ();
+    $unique-values: ();
+
+    // For some reason index based on floats fails
+    // So we need to track keys and values separately.
+    @each $key-and-val in $key-and-value-list {
+        //@debug $key-and-val;
+        $key: nth($key-and-val, 1);
+        $val: nth($key-and-val, 2);
+        @if index($unique-value-keys, "#{$val}") == false {
+            $unique-value-keys: append($unique-value-keys, "#{$val}", comma);
+            $items: "ext-" + $key, $val;
+            $unique-values: append($unique-values, $items, space);
+        }
     }
 
-    // if we're not using fractions, 
-    // "pop" the fraction values off the list
-    @if($griddles-use-fractions-selectors == false) {
-        $step-item: nth($step-item, 1);
-    }
+    @return $unique-values;
+}
 
-    // we have fraction values
-    @if(length($step-item) > 1) {
-        $percent: floor(nth($step-item,1));
-        $selector: "." + $bp + get-percentage-selector($percent) + "," + "." + $bp + get-fraction-selector($step-item);
+// This function adds the key to lookup from the unique value list to the
+// list of selectors.
+@function get-sel-key-val-list($unique-value-list, $key-and-value-list) {
+    // Loop over unique values
+    $sel-key-val-list: ();
+    @each $unique-keypair in $unique-value-list {
+
+        $extend-sel: nth($unique-keypair, 1);
+        $extend-val: nth($unique-keypair, 2);
+
+        @each $keypair in $key-and-value-list {
+            $key: nth($keypair, 1);
+            $val: nth($keypair, 2);
+
+            @if $extend-val == $val {
+                $items: $extend-sel, $key, $val;
+                $sel-key-val-list: append($sel-key-val-list, $items, space);
+            }
+
+        }
     }
-    // percentage only
-    @else {
-        $percent: floor($step-item);
-        $selector: "." + $bp + get-percentage-selector($percent);
-    }
-    @return $selector;
+    @return $sel-key-val-list;
 }
