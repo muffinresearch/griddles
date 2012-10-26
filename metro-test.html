@@ -13,16 +13,25 @@
             max-width: 70em;
             margin: 0 auto;
             padding: 10px;
-            border: 1px solid #ccc;
             font-family: helvetica, sans;
         }
         .txt {
-            height: 50px;
             background: #eee;
             text-align: center;
             line-height: 50px;
             text-shadow: 0 1px 1px #FFF;
             color: #ccc;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            left: 5px;
+            bottom: 5px;
+        }
+        .grid {
+            width: 100%;
+        }
+        .grid [class*="g-"] {
+            position: relative;
         }
         .txt:hover {
             background: #ccc;
@@ -47,7 +56,7 @@
             font-size: 35px;
         }
         .green {
-           background: #6CB71E; 
+           background: #6CB71E;
         }
         .red {
             background: #BD1D4A;
@@ -64,7 +73,13 @@
         .outlined {
             outline: 1px solid yellow;
         }
-        
+
+        .h-1\/6 {
+            /* Approximate some height control based on the parent */
+            padding-bottom: 16.666666667% !important;
+            padding-top: 0 !important;
+        }
+
     </style>
 </head>
 <body>
@@ -72,14 +87,20 @@
     <header>
        <h1>Griddles</h1>
     </header>
-    <h2>Nested Grids should not have guttering applied if the parent does.</h2>
+    <h2>A Metro-alike example. Using some extra tricks to maintain height.</h2>
 
-    <p>Here's a selection of the standard classes applied to create various divisions of content</p>
-    <div class="grid gutter metro-examples">
-        <div class="g-1/6"><div class="txt red"></div></div>
-        <div class="g-1/6"><div class="txt green"></div></div>
-        <div class="g-2/6"><div class="txt red"></div></div>
-        <div class="g-2/6"><div class="txt green"></div></div>
+    <div class="grid clearfix gutter metro-examples">
+        <div class="g-1/6 h-1/6"><div class="txt orange"></div></div>
+        <div class="g-1/6 h-1/6"><div class="txt green"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt red"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt blue"></div></div>
+        <div class="g-1/6 h-1/6"><div class="txt red"></div></div>
+        <div class="g-1/6 h-1/6"><div class="txt blue"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt orange"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt green"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt orange"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt green"></div></div>
+        <div class="g-2/6 h-1/6"><div class="txt blue"></div></div>
     </div>
 
 </div>
