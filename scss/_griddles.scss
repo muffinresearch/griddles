@@ -38,7 +38,7 @@ $sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list)
 // So there's no left/right gutter for first
 // and last elements in a given row.
 .#{$griddles-grid-classname}.gutter {
-    margin: 0 -5px;
+    margin: 0 -($griddles-gutter-size/2);
 }
 
 // When gutter class is added to the grid container
