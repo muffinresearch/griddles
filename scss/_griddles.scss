@@ -125,24 +125,27 @@ $sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list)
 // They are contained to the breakpoint with min *and* max
 // so if there's not an override for that breakpoint the normal
 // the non-override class will apply.
-@each $k in $griddles-breakpoint-prefixes {
-    @include respond-to(nth($k, 2), nth($k, 3)) {
+//
+// Note: we don't output the overrides for ie < 9
+@if $is-ie-lt-9 == false {
+    @each $k in $griddles-breakpoint-prefixes {
+        @include respond-to(nth($k, 2), nth($k, 3)) {
 
-        $breakpoint: nth($k, 1);
-        @include generate-width-selectors("#{$breakpoint}-#{$griddles-class-prefix}-");
+            $breakpoint: nth($k, 1);
+            @include generate-width-selectors("#{$breakpoint}-#{$griddles-class-prefix}-");
 
-        .#{$breakpoint}-show {
-            display: inline-block;
-        }
-        .#{$breakpoint}-hide {
-            display: none;
-        }
-        .#{$breakpoint}-invisible {
-            visibility: hidden;
-        }
-        .#{$breakpoint}-visible {
-            visibility: visible;
+            .#{$breakpoint}-show {
+                display: inline-block;
+            }
+            .#{$breakpoint}-hide {
+                display: none;
+            }
+            .#{$breakpoint}-invisible {
+                visibility: hidden;
+            }
+            .#{$breakpoint}-visible {
+                visibility: visible;
+            }
         }
     }
 }
-
