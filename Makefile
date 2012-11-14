@@ -14,6 +14,9 @@ compass-debug:
 compass-expanded:
 	$(COMPASS) compile -c config/compass/expanded.rb
 
-.PHONY: compass-watch release compass-min compass-debug compass-expanded
+clean:
+	rm -fr css/*
+
+.PHONY: compass-watch release compass-min compass-debug compass-expanded clean
 
 .NOTPARALLEL:
