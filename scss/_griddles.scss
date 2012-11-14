@@ -1,27 +1,5 @@
-@import 'compass/css3';
-@import 'compass/utilities/general/clearfix';
 @import '_settings.scss';
 @import '_utils.scss';
-
-// Supply a generally useful clearfix class.
-.clearfix {
-    @include pie-clearfix;
-}
-
-// Building the data necessary to have collapsed selectors for shared values.
-// E.g: g-50, g-1/2 are the same value 50%;
-// Generate a list of all the percentages up to 100 based on the step configured.
-$perc-steps-and-value-list: get-steps-and-value-list($griddles-step-increment);
-
-// Get a list of two-item lists containg the key and the value extending the list input.
-$key-and-value-list: get-fraction-and-value-list($griddles-fraction-steps, $perc-steps-and-value-list);
-
-// Get the list of unique keys and values
-$unique-value-list: get-unique-value-list($key-and-value-list);
-
-// Get a list that has a list of lists. The individual lists will be
-// (selector-key, key, value);
-$sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list);
 
 // Remove white-space from grid elements so there's
 // no need to cuddle inline-block elements
@@ -31,8 +9,11 @@ $sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list)
     font-family: "Courier New", monospace;
     letter-spacing: -0.63em;
     word-spacing:-0.63em;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
+
 
 // Offset the grid when the gutter is enabled
 // So there's no left/right gutter for first
@@ -58,7 +39,9 @@ $sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list)
     letter-spacing: normal;
     word-spacing: normal;
     margin: 0;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     font-family: $griddles-font-family;
     width: 100%;
 }
@@ -78,47 +61,26 @@ $sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list)
     visibility: normal;
 }
 
+$selector-value-list: get_grid_selector_values($griddles-step-increment, $griddles-fraction-steps, $griddles-fraction-symbol, "", $griddles-class-prefix, "-");
 
 // Generate the shared rules for all of the standard classes.
-@each $extkey-sel-val in $sel-key-val-list {
-    $sel: nth($extkey-sel-val, 2);
-    .#{$griddles-class-prefix}-#{$sel} {
+@each $sel-val in $selector-value-list {
+    $sel: nth($sel-val, 1);
+    #{$sel} {
         @extend .#{$griddles-class-prefix}-cont;
-    }
-}
-
-// Loop over the unique values and output the collective
-// Selectors for the same values.
-// This is necessary due to problems generating and
-// using extends inside the same @media block
-@mixin generate-width-selectors($sel-prefix) {
-
-     @each $unique-keypair in $unique-value-list {
-        $extend-sel: nth($unique-keypair, 1);
-        $extend-val: nth($unique-keypair, 2);
-        $selector-list: ();
-        @each $extkey-sel-val in $sel-key-val-list {
-            $extkey: nth($extkey-sel-val, 1);
-            $sel: nth($extkey-sel-val, 2);
-
-            @if $extkey == $extend-sel {
-                $classname: ".#{$sel-prefix}#{$sel}";
-                $selector-list: append($selector-list, #{$classname}, comma)
-            }
-
-        }
-        // Having collected all the selectors that need this value
-        // output it.
-        #{$selector-list} {
-            width: percentage($extend-val) / 100;
-        }
     }
 }
 
 // Defaults widths for standard classes
 // This starts at "M" as "S" is essentially the baseline.
 @include respond-to(nth($griddles-M, 2)) {
-    @include generate-width-selectors("#{$griddles-class-prefix}-");
+    @each $sel-val in $selector-value-list {
+        $sel: nth($sel-val, 1);
+        $val: nth($sel-val, 2);
+        #{$sel} {
+            width: percentage($val) / 100;
+        }
+    }
 }
 
 // This loop generates the breakpoint override selectors.
@@ -132,7 +94,14 @@ $sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list)
         @include respond-to(nth($k, 2), nth($k, 3)) {
 
             $breakpoint: nth($k, 1);
-            @include generate-width-selectors("#{$breakpoint}-#{$griddles-class-prefix}-");
+            $selector-value-list: get_grid_selector_values($griddles-step-increment, $griddles-fraction-steps, $griddles-fraction-symbol, $breakpoint, $griddles-class-prefix, "-");
+            @each $sel-val in $selector-value-list {
+                $sel: nth($sel-val, 1);
+                $val: nth($sel-val, 2);
+                #{$sel} {
+                    width: percentage($val) / 100;
+                }
+            }
 
             .#{$breakpoint}-show {
                 display: inline-block;
@@ -149,3 +118,4 @@ $sel-key-val-list: get-sel-key-val-list($unique-value-list, $key-and-value-list)
         }
     }
 }
+
