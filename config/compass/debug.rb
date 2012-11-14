@@ -1,20 +1,10 @@
-# Require any additional compass plugins here.
-root_path = File.expand_path(File.join(File.dirname(__FILE__), "../../"))
-project_path = root_path
-css_path = File.join(root_path, "css/debug/")
-sass_path = File.join(root_path, "scss/")
-cache_path = File.join(root_path, "tmp/sass-cache")
-images_path = File.join(root_path, "img/")
-javascripts_path = File.join(root_path, "js/")
+config_file = File.expand_path('../base.rb', __FILE__)
+require config_file
 
-# You can select your preferred output style here (can be overridden via the command line):
-output_style = :debug
+Compass.configuration do |config|
+    # Default settings that need to be overriden
+    output_style = :debug
+    css_path = File.join($root_path, "css/debug/")
+    line_comments = true
+end
 
-# To enable relative paths to assets via compass helper functions. Uncomment:
-relative_assets = true
-
-# To disable debugging comments that display the original location of your selectors. Uncomment:
-line_comments = true
-
-# Control precision
-Sass::Script::Number.precision = 8
